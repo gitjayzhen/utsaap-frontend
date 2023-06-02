@@ -52,12 +52,28 @@ export async function getInitialState(): Promise<{
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
 export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) => {
   return {
+    breadcrumbRender: (routers = []) => [
+      {
+        path: '/',
+        breadcrumbName: '首页',
+        // breadcrumbName: formater
+      },
+      ...routers,
+    ],
+    itemRender: (route, params, routes, paths) => {
+      const first = routes.indexOf(route) === 0;
+      return first ? (
+        <Link to={paths.join('/')}>{route.breadcrumbName}</Link>
+      ) : (
+        <span>{route.breadcrumbName}</span>
+      );
+    },
     rightContentRender: () => <RightContent />,
     disableContentMargin: false,
     waterMarkProps: {
       content: initialState?.currentUser?.name,
     },
-    footerRender: () => <Footer />,
+    // footerRender: () => <Footer />,
     onPageChange: () => {
       const { location } = history;
       // 如果没有登录，重定向到 login
@@ -65,18 +81,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
         history.push(loginPath);
       }
     },
-    links: isDev
-      ? [
-          <Link to="/umi/plugin/openapi" target="_blank">
-            <LinkOutlined />
-            <span>OpenAPI 文档</span>
-          </Link>,
-          <Link to="/~docs">
-            <BookOutlined />
-            <span>业务组件文档</span>
-          </Link>,
-        ]
-      : [],
+    links: [],
     menuHeaderRender: undefined,
     // 自定义 403 页面
     // unAccessible: <div>unAccessible</div>,
