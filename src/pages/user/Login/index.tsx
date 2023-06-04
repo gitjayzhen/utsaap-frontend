@@ -73,24 +73,24 @@ const Login: React.FC = () => {
       <div className={styles.content}>
         <LoginForm
           logo={<img alt="logo" src="/logo.svg" />}
-          title="Ant Design"
-          subTitle={'Ant Design 是西湖区最具影响力的 Web 设计规范'}
+          title="UTSaap"
+          subTitle={''}
           initialValues={{
             autoLogin: true,
           }}
-          actions={[
-            '其他登录方式 :',
-            <AlipayCircleOutlined key="AlipayCircleOutlined" className={styles.icon} />,
-            <TaobaoCircleOutlined key="TaobaoCircleOutlined" className={styles.icon} />,
-            <WeiboCircleOutlined key="WeiboCircleOutlined" className={styles.icon} />,
-          ]}
+          // actions={[
+          //   '其他登录方式 :',
+          //   <AlipayCircleOutlined key="AlipayCircleOutlined" className={styles.icon} />,
+          //   <TaobaoCircleOutlined key="TaobaoCircleOutlined" className={styles.icon} />,
+          //   <WeiboCircleOutlined key="WeiboCircleOutlined" className={styles.icon} />,
+          // ]}
           onFinish={async (values) => {
             await handleSubmit(values as API.LoginParams);
           }}
         >
           <Tabs activeKey={type} onChange={setType}>
             <Tabs.TabPane key="account" tab={'账户密码登录'} />
-            <Tabs.TabPane key="mobile" tab={'手机号登录'} />
+            {/* <Tabs.TabPane key="mobile" tab={'手机号登录'} /> */}
           </Tabs>
 
           {status === 'error' && loginType === 'account' && (
@@ -202,7 +202,7 @@ const Login: React.FC = () => {
           </div>
         </LoginForm>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
