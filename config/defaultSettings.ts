@@ -14,7 +14,7 @@ const Settings: LayoutSettings & {
   colorWeak: false,
   title: 'UTS',
   pwa: false,
-  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  logo: '/logo2.svg',
   iconfontUrl: '',
   headerHeight: 48,
   footerRender: false,
