@@ -33,6 +33,13 @@ export default [
     // component: './Admin',
     routes: [
       { path: '/case/manager', name: '用例列表', icon: 'smile', component: './case-manager' },
+      {
+        path: '/case/detail',
+        name: '用例内容',
+        hideInMenu: true,
+        icon: 'smile',
+        component: './case-manager/components/case-detail',
+      },
       { component: './404' },
     ],
   },

@@ -3,6 +3,7 @@ import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/
 import type { MenuProps } from 'antd';
 import { Layout, Menu } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
+import { history } from 'umi';
 
 import './index.less';
 
@@ -45,6 +46,10 @@ const items2: MenuProps['items'] = [
 const CaseManager: React.FC = () => {
   console.log('tseting');
 
+  const goToCaseDetail = () => {
+    history.push('/case/detail');
+  };
+
   return (
     <PageContainer>
       <Layout
@@ -75,6 +80,7 @@ const CaseManager: React.FC = () => {
             style={{ padding: 24, textAlign: 'center', overflow: 'auto', height: '100%' }}
           >
             <p>long content</p>
+            <a onClick={() => goToCaseDetail()}>查看详情</a>
             {
               // indicates very long content
               Array.from({ length: 100 }, (_, index) => (

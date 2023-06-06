@@ -1,16 +1,8 @@
-import {
-  AlipayCircleOutlined,
-  LockOutlined,
-  MobileOutlined,
-  TaobaoCircleOutlined,
-  UserOutlined,
-  WeiboCircleOutlined,
-} from '@ant-design/icons';
+import { LockOutlined, MobileOutlined, UserOutlined } from '@ant-design/icons';
 import { Alert, message, Tabs } from 'antd';
 import React, { useState } from 'react';
 import { ProFormCaptcha, ProFormCheckbox, ProFormText, LoginForm } from '@ant-design/pro-form';
 import { history, useModel } from 'umi';
-import Footer from '@/components/Footer';
 import { login } from '@/services/ant-design-pro/api';
 import { getFakeCaptcha } from '@/services/ant-design-pro/login';
 import styles from './index.less';
@@ -73,24 +65,17 @@ const Login: React.FC = () => {
       <div className={styles.content}>
         <LoginForm
           logo={<img alt="logo" src="/logo.svg" />}
-          title="UTSaap"
+          title="UTS"
           subTitle={''}
           initialValues={{
             autoLogin: true,
           }}
-          // actions={[
-          //   '其他登录方式 :',
-          //   <AlipayCircleOutlined key="AlipayCircleOutlined" className={styles.icon} />,
-          //   <TaobaoCircleOutlined key="TaobaoCircleOutlined" className={styles.icon} />,
-          //   <WeiboCircleOutlined key="WeiboCircleOutlined" className={styles.icon} />,
-          // ]}
           onFinish={async (values) => {
             await handleSubmit(values as API.LoginParams);
           }}
         >
           <Tabs activeKey={type} onChange={setType}>
             <Tabs.TabPane key="account" tab={'账户密码登录'} />
-            {/* <Tabs.TabPane key="mobile" tab={'手机号登录'} /> */}
           </Tabs>
 
           {status === 'error' && loginType === 'account' && (
@@ -202,7 +187,6 @@ const Login: React.FC = () => {
           </div>
         </LoginForm>
       </div>
-      {/* <Footer /> */}
     </div>
   );
 };
